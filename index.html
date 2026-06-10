@@ -1140,6 +1140,8 @@
       document.querySelectorAll("#product-grid .fade-up").forEach(function (el, i) {
         el.style.transitionDelay = (i * 0.08) + "s";
       });
+	  
+	  loadProducts();
     });
 	
 	async function loadProducts() {
@@ -1226,6 +1228,8 @@
 
 	  document.querySelectorAll(".fade-up").forEach(el => observer.observe(el));
 	}
+
+  
   </script>
 
 </body>
