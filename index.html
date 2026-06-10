@@ -1145,67 +1145,101 @@
     });
 	
 	async function loadProducts() {
-	  const res = await fetch('/products.json');
-	  const products = await res.json();
+	  console.log("[loadProducts] Iniciando carga...");
 
-	  const grid = document.getElementById("product-grid");
+	  try {
+		console.log("[loadProducts] Fetching products.json...");
 
-	  grid.innerHTML = products.map((p, i) => {
-		const img1 = p.images[0];
-		const img2 = p.images[1];
+		const res = await fetch('./products.json');
+		console.log("[loadProducts] Response status:", res.status);
 
-		return `
-		<div class="col-6 col-lg-3 fade-up">
-		  <div class="product-card">
+		if (!res.ok) {
+		  throw new Error(`HTTP error! status: ${res.status}`);
+		}
 
-			<!-- DESKTOP -->
-			<div class="img-swap-wrapper desktop-img">
-			  <img class="img-primary" src="${img1}" alt="${p.name} 1" />
-			  <img class="img-secondary" src="${img2}" alt="${p.name} 2" />
-			</div>
+		const products = await res.json();
+		console.log("[loadProducts] Productos cargados:", products);
+		console.log("[loadProducts] Cantidad de productos:", products.length);
 
-			<!-- MOBILE CAROUSEL -->
-			<div id="car-${i}" class="carousel slide mobile-carousel" data-bs-ride="carousel">
-			  <div class="carousel-inner">
-				${p.images.map((img, idx) => `
-				  <div class="carousel-item ${idx === 0 ? "active" : ""}">
-					<img src="${img}" class="d-block w-100" />
-				  </div>
-				`).join("")}
-			  </div>
-			</div>
+		const grid = document.getElementById("product-grid");
 
-			<div class="card-body-custom">
-			  <span class="theme-tag">${p.theme}</span>
-			  <p class="card-product-name">${p.name}</p>
-			  <p class="card-desc">${p.description}</p>
+		if (!grid) {
+		  console.error("[loadProducts] No se encontró #product-grid en el DOM");
+		  return;
+		}
 
-			  <div class="price-block">
-				<div class="price-retail">$${p.price}</div>
-				<div class="price-retail-label">Precio unitario</div>
+		console.log("[loadProducts] Renderizando productos...");
 
-				<div class="price-wholesale-row">
-				  <i class="bi bi-tags-fill"></i>
-				  <div>
-					<span class="price-wholesale">$${p.wholesale}</span>
-					<span class="price-wholesale-label"> · Mayorista</span>
+		grid.innerHTML = products.map((p, i) => {
+		  console.log(`[render] Producto ${i}:`, p.name);
+
+		  const img1 = p.images?.[0];
+		  const img2 = p.images?.[1];
+
+		  if (!img1 || !img2) {
+			console.warn(`[render] Producto ${p.name} sin suficientes imágenes`, p.images);
+		  }
+
+		  return `
+			<div class="col-6 col-lg-3 fade-up">
+			  <div class="product-card">
+
+				<!-- DESKTOP -->
+				<div class="img-swap-wrapper desktop-img">
+				  <img class="img-primary" src="${img1}" alt="${p.name} 1" />
+				  <img class="img-secondary" src="${img2}" alt="${p.name} 2" />
+				</div>
+
+				<!-- MOBILE CAROUSEL -->
+				<div id="car-${i}" class="carousel slide mobile-carousel" data-bs-ride="carousel">
+				  <div class="carousel-inner">
+					${p.images.map((img, idx) => `
+					  <div class="carousel-item ${idx === 0 ? "active" : ""}">
+						<img src="${img}" class="d-block w-100" />
+					  </div>
+					`).join("")}
 				  </div>
 				</div>
+
+				<div class="card-body-custom">
+				  <span class="theme-tag">${p.theme}</span>
+				  <p class="card-product-name">${p.name}</p>
+				  <p class="card-desc">${p.description}</p>
+
+				  <div class="price-block">
+					<div class="price-retail">$${p.price}</div>
+					<div class="price-retail-label">Precio unitario</div>
+
+					<div class="price-wholesale-row">
+					  <i class="bi bi-tags-fill"></i>
+					  <div>
+						<span class="price-wholesale">$${p.wholesale}</span>
+						<span class="price-wholesale-label"> · Mayorista</span>
+					  </div>
+					</div>
+				  </div>
+
+				  <a href="#"
+					 class="btn-wa-card"
+					 onclick="return sendWA('${p.name}', ${p.price}, ${p.wholesale})">
+					<i class="bi bi-whatsapp"></i> Pedir por WhatsApp
+				  </a>
+
+				</div>
 			  </div>
+			</div>`;
+		}).join("");
 
-			  <a href="#"
-				 class="btn-wa-card"
-				 onclick="return sendWA('${p.name}', ${p.price}, ${p.wholesale})">
-				<i class="bi bi-whatsapp"></i> Pedir por WhatsApp
-			  </a>
+		console.log("[loadProducts] Render completado");
 
-			</div>
-		  </div>
-		</div>`;
-	  }).join("");
+		console.log("[loadProducts] Ejecutando observeFadeUp()");
+		observeFadeUp();
 
-	  // reactivar animaciones
-	  observeFadeUp();
+		console.log("[loadProducts] OK finalizado");
+
+	  } catch (err) {
+		console.error("[loadProducts] ERROR:", err);
+	  }
 	}
 	
 	function sendWA(name, price, wholesale) {
