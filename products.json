@@ -4,21 +4,80 @@
     "theme": "Fútbol",
     "description": "Llavero de la pelota oficial del mundial.",
     "price": 5000,
-    "wholesale": 3600,
+    "wholesale": 3800,
     "images": [
       "images/llaveros/trionda1.jpg",
       "images/llaveros/trionda2.png"
     ]
   },
   {
-    "name": "Zelda — Triforce",
-    "theme": "Gaming",
-    "description": "Llavero con la Trifuerza dorada sobre base negra.",
-    "price": 2500,
-    "wholesale": 1800,
+    "name": "Camiseta MESSI",
+    "theme": "Fútbol",
+    "description": "Llavero de la camiseta de Lionel.",
+    "price": 4000,
+    "wholesale": 2800,
     "images": [
-      "https://placehold.co/400x400/1E293B/F59E0B?text=Zelda+1",
-      "https://placehold.co/400x400/1E293B/FBBF24?text=Zelda+2"
+      "images/llaveros/messi1.png"
+    ]
+  },
+  {
+    "name": "Copa del Mundo",
+    "theme": "Fútbol",
+    "description": "Llavero de la copa.",
+    "price": 4000,
+    "wholesale": 2800,
+    "images": [
+      "images/llaveros/copa1.png"
+    ]
+  },
+  {
+    "name": "Stitch Guitarra",
+    "theme": "Pelis",
+    "description": "Llavero de stitch guitarrista.",
+    "price": 4000,
+    "wholesale": 2800,
+    "images": [
+      "images/llaveros/stitch2.png"
+    ]
+  },
+  {
+    "name": "Stitch Vaso",
+    "theme": "Pelis",
+    "description": "Llavero de stitch vaso.",
+    "price": 4000,
+    "wholesale": 2800,
+    "images": [
+      "images/llaveros/stitch1.png"
+    ]
+  },
+  {
+    "name": "Mini Mike",
+    "theme": "Pelis",
+    "description": "Llavero de mike wazowsky mini.",
+    "price": 4000,
+    "wholesale": 2800,
+    "images": [
+      "images/llaveros/mike1.png"
+    ]
+  },
+  {
+    "name": "Ansiedad",
+    "theme": "Pelis",
+    "description": "Llavero de Ansiedad de Intensamente.",
+    "price": 4000,
+    "wholesale": 2800,
+    "images": [
+      "images/llaveros/ansiedad1.png"
+    ]
+  },
+  {
+    "name": "Spider-Man",
+    "theme": "Pelis",
+    "description": "Llavero de spiderman mini.",
+    "price": 4000,
+    "wholesale": 2800,
+    "images": [
+      "images/llaveros/spiderman1.png"
     ]
   }
 ]
