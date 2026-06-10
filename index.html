@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO Básico -->
+  <title>Llaverulis | Llaveros Temáticos</title>
+  <meta name="description" content="Llaveros de tematicas: anime, gaming, deportes, personajes y más. Pedí por WhatsApp. Mayoreo disponible." />
+  <meta property="og:title" content="KeyCraft | Llaveros Artesanales" />
+  <meta property="og:description" content="Llaveros únicos. Pedí el tuyo por WhatsApp." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔑</text></svg>" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+
+  <style>
+    /* ============================================================
+       VARIABLES Y BASE
+       ============================================================ */
+    :root {
+  --bg-main:       #0F172A;
+  --bg-card:       #1E293B;
+  --bg-section:    #111827;
+
+  /* color principal (rosa) */
+  --amber:         #FEA2D1;
+  --amber-light:   #FBCFE8;
+
+  /* nuevo acento violeta (complementario del rosa) */
+  --accent:        #A78BFA;
+  --accent-light:  #DDD6FE;
+
+  /* texto */
+  --text-main:     #F9FAFB;
+  --text-muted:    #CBD5E1;
+  --text-dim:      #94A3B8;
+
+  /* bordes más suaves y fríos */
+  --border:        #2B3447;
+
+  --radius:        14px;
+
+  /* sombra combinando rosa + violeta muy sutil */
+  --shadow:        0 8px 28px rgba(254, 162, 209, 0.10),
+                   0 4px 18px rgba(167, 139, 250, 0.08);
+}
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg-main);
+      color: var(--text-main);
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    h1, h2, h3, h4, h5 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+    }
+
+    /* ============================================================
+       NAVBAR
+       ============================================================ */
+    .navbar-custom {
+      background: rgba(15,23,42,.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: .75rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+	
+	.nav-logo {
+	  display: flex; align-items: center; gap: 0.9rem;
+	}
+	.nav-logo img {
+	  width: 44px; height: 44px; border-radius: 50%;
+	  border: 2px solid var(--red);
+	  object-fit: cover;
+	  transition: box-shadow 0.3s;
+	}
+.nav-logo img:hover { box-shadow: 0 0 16px var(--red); }
+
+    .navbar-brand-text {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 1.35rem;
+      color: var(--amber) !important;
+      letter-spacing: -.5px;
+    }
+
+    .navbar-brand-text span { color: var(--text-main); }
+
+    .nav-link-custom {
+      color: var(--text-muted) !important;
+      font-size: .9rem;
+      font-weight: 500;
+      transition: color .2s;
+      padding: .35rem .75rem !important;
+    }
+
+    .nav-link-custom:hover { color: var(--amber) !important; }
+
+    .btn-nav-wa {
+      background: #25D366;
+      color: #fff !important;
+      font-weight: 600;
+      font-size: .85rem;
+      padding: .4rem 1rem;
+      border-radius: 20px;
+      border: none;
+      transition: filter .2s;
+    }
+
+    .btn-nav-wa:hover { filter: brightness(1.1); }
+
+    /* ============================================================
+       HERO
+       ============================================================ */
+    .hero {
+      background: linear-gradient(135deg, #0F172A 0%, #1a2744 60%, #0F172A 100%);
+      padding: 7rem 0 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 70% 50%, rgba(245,158,11,.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: .75rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2.4rem, 6vw, 3.8rem);
+      font-weight: 800;
+      line-height: 1.12;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-title .highlight {
+      color: var(--amber);
+      position: relative;
+    }
+
+    .hero-subtitle {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      max-width: 460px;
+      margin-bottom: 2rem;
+    }
+
+    .btn-amber {
+      background: var(--amber);
+      color: #0F172A;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: .95rem;
+      padding: .75rem 1.75rem;
+      border-radius: 8px;
+      border: none;
+      transition: background .2s, transform .15s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+    }
+
+    .btn-amber:hover {
+      background: var(--amber-light);
+      color: #0F172A;
+      transform: translateY(-1px);
+    }
+
+    .btn-outline-amber {
+      background: transparent;
+      color: var(--amber);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: .95rem;
+      padding: .75rem 1.75rem;
+      border-radius: 8px;
+      border: 1.5px solid var(--amber);
+      transition: background .2s, color .2s;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+    }
+
+    .btn-outline-amber:hover {
+      background: var(--amber);
+      color: #0F172A;
+    }
+
+    .hero-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Grid decorativo de llaveros en el hero */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      max-width: 360px;
+      margin: 0 auto;
+    }
+
+    .hero-grid-item {
+      aspect-ratio: 1;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      position: relative;
+    }
+
+    .hero-grid-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: .85;
+    }
+
+    /* Placeholder visual cuando no hay imagen */
+    .hero-grid-item.placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      background: linear-gradient(135deg, var(--bg-card), #263352);
+    }
+
+    .hero-grid-item:nth-child(2) { transform: translateY(-8px); }
+    .hero-grid-item:nth-child(5) { transform: translateY(-8px); }
+
+    /* ============================================================
+       SECCIÓN GENÉRICA
+       ============================================================ */
+    .section-pad { padding: 5rem 0; }
+
+    .section-dark { background: var(--bg-section); }
+
+    .section-label {
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: .5rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      font-weight: 700;
+      margin-bottom: .5rem;
+    }
+
+    .section-sub {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 520px;
+    }
+
+    hr.divider {
+      border: none;
+      border-top: 1.5px solid var(--border);
+      margin: 1.5rem 0;
+    }
+
+    /* ============================================================
+       TEMÁTICAS
+       ============================================================ */
+    .theme-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: .88rem;
+      padding: .55rem 1.1rem;
+      border-radius: 40px;
+      cursor: default;
+      transition: border-color .2s, color .2s;
+    }
+
+    .theme-badge:hover {
+      border-color: var(--amber);
+      color: var(--amber);
+    }
+
+    .theme-badge .bi {
+      font-size: 1.05rem;
+      color: var(--amber);
+    }
+
+    /* ============================================================
+       CARDS DE PRODUCTOS
+       ============================================================ */
+    .product-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform .25s, box-shadow .25s;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 36px rgba(0,0,0,.55);
+    }
+
+    /* Contenedor de imagen con swap hover en desktop */
+    .img-swap-wrapper {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      background: #1a2540;
+    }
+
+    .img-swap-wrapper img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity .4s ease;
+    }
+
+    .img-swap-wrapper .img-primary   { opacity: 1; z-index: 1; }
+    .img-swap-wrapper .img-secondary { opacity: 0; z-index: 2; }
+
+    /* Hover desktop: mostrar segunda imagen */
+    @media (hover: hover) {
+      .product-card:hover .img-primary   { opacity: 0; }
+      .product-card:hover .img-secondary { opacity: 1; }
+    }
+
+    /* Carousel para mobile (oculto en desktop) */
+    .mobile-carousel { display: none; }
+
+    @media (max-width: 767px) {
+      .desktop-img   { display: none !important; }
+      .mobile-carousel { display: block; }
+    }
+
+    @media (min-width: 768px) {
+      .mobile-carousel { display: none !important; }
+      .desktop-img     { display: block !important; }
+    }
+
+    /* Badge de temática */
+    .theme-tag {
+      display: inline-block;
+      font-size: .72rem;
+      font-weight: 600;
+      background: rgba(254, 162, 209, .12);
+	  border: 1px solid rgba(254, 162, 209, .25);
+      color: var(--amber);
+      padding: .15rem .6rem;
+      border-radius: 20px;
+      margin-bottom: .4rem;
+    }
+
+    /* Cuerpo de la card */
+    .card-body-custom {
+      padding: 1.1rem 1.25rem 1.4rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: .35rem;
+    }
+
+    .card-product-name {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin: 0;
+      line-height: 1.3;
+    }
+
+    .card-desc {
+      font-size: .85rem;
+      color: var(--text-dim);
+      margin: 0;
+      flex: 1;
+    }
+
+    /* Precios */
+    .price-block {
+      display: flex;
+      flex-direction: column;
+      gap: .25rem;
+      margin-top: .5rem;
+    }
+
+    .price-retail {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--amber);
+      line-height: 1;
+    }
+
+    .price-retail-label {
+      font-size: .72rem;
+      color: var(--text-dim);
+      letter-spacing: .5px;
+    }
+
+    .price-wholesale-row {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      background: rgba(254, 162, 209, .10);
+
+  /* borde en rosa más sutil */
+  border: 1px solid rgba(254, 162, 209, .22);
+      border-radius: 8px;
+      padding: .3rem .65rem;
+    }
+
+    .price-wholesale {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: .95rem;
+      color: var(--amber-light);
+    }
+
+    .price-wholesale-label {
+      font-size: .72rem;
+      color: var(--text-dim);
+    }
+
+    /* Botón WhatsApp en card */
+    .btn-wa-card {
+      background: #25D366;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: .88rem;
+      padding: .6rem 0;
+      border-radius: 8px;
+      border: none;
+      width: 100%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .45rem;
+      text-decoration: none;
+      transition: filter .2s, transform .15s;
+      margin-top: .75rem;
+    }
+
+    .btn-wa-card:hover {
+      filter: brightness(1.1);
+      transform: translateY(-1px);
+      color: #fff;
+    }
+
+    /* ============================================================
+       SECCIÓN SOBRE NOSOTROS
+       ============================================================ */
+    .about-feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-icon {
+      width: 44px;
+      height: 44px;
+      min-width: 44px;
+      background: rgba(245,158,11,.12);
+      border: 1px solid rgba(245,158,11,.25);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: var(--amber);
+    }
+
+    .about-feature h5 {
+      font-size: .98rem;
+      font-weight: 600;
+      margin-bottom: .2rem;
+      color: var(--text-main);
+    }
+
+    .about-feature p {
+      font-size: .88rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    /* ============================================================
+       MAYORISTAS
+       ============================================================ */
+    .wholesale-card {
+      background: linear-gradient(135deg, #1a2744 0%, #162040 100%);
+      border: 1px solid rgba(245,158,11,.25);
+      border-radius: var(--radius);
+      padding: 2.5rem 2rem;
+    }
+
+    .wholesale-step {
+      display: flex;
+      align-items: center;
+      gap: .85rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .wholesale-step-num {
+      width: 36px;
+      height: 36px;
+      min-width: 36px;
+      background: var(--amber);
+      color: #0F172A;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: .9rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .wholesale-step-text strong {
+      font-size: .95rem;
+      color: var(--text-main);
+    }
+
+    .wholesale-step-text p {
+      font-size: .82rem;
+      color: var(--text-dim);
+      margin: 0;
+    }
+
+    /* Stat badge */
+    .stat-pill {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem 1rem;
+      text-align: center;
+    }
+
+    .stat-pill .stat-num {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--amber);
+      line-height: 1;
+    }
+
+    .stat-pill .stat-label {
+      font-size: .8rem;
+      color: var(--text-muted);
+      margin-top: .2rem;
+    }
+
+    /* ============================================================
+       ENVÍOS
+       ============================================================ */
+    .shipping-item {
+      display: flex;
+      align-items: flex-start;
+      gap: .85rem;
+      padding: 1.1rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .shipping-item:last-child { border-bottom: none; }
+
+    .shipping-icon {
+      font-size: 1.4rem;
+      color: var(--amber);
+      min-width: 28px;
+    }
+
+    .shipping-item h5 {
+      font-size: .95rem;
+      font-weight: 600;
+      margin-bottom: .15rem;
+    }
+
+    .shipping-item p {
+      font-size: .85rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    /* ============================================================
+       CONTACTO / REDES
+       ============================================================ */
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: .85rem;
+      color: var(--text-main);
+      text-decoration: none;
+      padding: .85rem 1.1rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      transition: border-color .2s, color .2s;
+      font-size: .95rem;
+    }
+
+    .contact-link:hover {
+      border-color: var(--amber);
+      color: var(--amber);
+    }
+
+    .contact-link .bi {
+      font-size: 1.3rem;
+      color: var(--amber);
+    }
+
+    /* ============================================================
+       CTA FINAL
+       ============================================================ */
+    .cta-section {
+      background: linear-gradient(135deg, #14213d 0%, #0F172A 100%);
+      border-top: 1px solid rgba(245,158,11,.2);
+      border-bottom: 1px solid rgba(245,158,11,.2);
+      text-align: center;
+      padding: 5rem 1rem;
+    }
+
+    .cta-section .cta-title {
+      font-size: clamp(1.8rem, 4.5vw, 3rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+
+    .cta-section .cta-sub {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 480px;
+      margin: 0 auto 2.25rem;
+    }
+
+    .btn-wa-big {
+      background: #25D366;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 1.1rem;
+      padding: .9rem 2.25rem;
+      border-radius: 10px;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      text-decoration: none;
+      transition: filter .2s, transform .15s;
+    }
+
+    .btn-wa-big:hover {
+      filter: brightness(1.1);
+      transform: translateY(-2px);
+      color: #fff;
+    }
+
+    /* ============================================================
+       FOOTER
+       ============================================================ */
+    footer {
+      background: var(--bg-section);
+      border-top: 1px solid var(--border);
+      padding: 2rem 0;
+      text-align: center;
+      color: var(--text-dim);
+      font-size: .83rem;
+    }
+
+    footer strong { color: var(--amber); }
+	
+	.foot-logo {
+	  display: block; align-items: center; gap: 0.9rem;
+	}
+	.foot-logo img {
+	  width: 44px; height: 44px; border-radius: 50%;
+	  border: 2px solid var(--red);
+	  object-fit: cover;
+	  transition: box-shadow 0.3s;
+	}
+
+    /* ============================================================
+       ANIMACIÓN FADE IN AL SCROLL
+       ============================================================ */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ============================================================
+       UTILS
+       ============================================================ */
+    .text-amber { color: var(--amber) !important; }
+    .bg-amber   { background: var(--amber) !important; }
+
+    /* Indicadores de carousel */
+    .carousel-indicators [data-bs-target] {
+      background-color: var(--amber);
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      border: none;
+      opacity: .45;
+    }
+
+    .carousel-indicators .active { opacity: 1; }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVBAR
+       ============================================================ -->
+  <nav class="navbar-custom">
+    <div class="container d-flex align-items-center justify-content-between">
+      <!-- Logo / Marca -->
+      <a href="#inicio" class="navbar-brand-text text-decoration-none nav-logo">
+        <img src="images/generales/logo.png" alt="Llaverulis logo" />ByLlaverulis
+      </a>
+
+      <!-- Links desktop -->
+      <div class="d-none d-md-flex align-items-center gap-1">
+        <a href="#catalogo"   class="nav-link-custom">Catálogo</a>
+        <a href="#mayoristas" class="nav-link-custom">Mayoristas</a>
+        <a href="#envios"     class="nav-link-custom">Envíos</a>
+        <a href="#contacto"   class="nav-link-custom">Contacto</a>
+        <a id="nav-wa-btn" href="#" class="btn-nav-wa ms-2" target="_blank" rel="noopener">
+          <i class="bi bi-whatsapp me-1"></i>Escribinos
+        </a>
+      </div>
+
+      <!-- Botón WhatsApp mobile -->
+      <a id="nav-wa-mobile" href="#" class="btn-nav-wa d-md-none" target="_blank" rel="noopener">
+        <i class="bi bi-whatsapp"></i>
+      </a>
+    </div>
+  </nav>
+
+
+  <!-- ============================================================
+       HERO
+       ============================================================ -->
+  <section id="inicio" class="hero">
+    <div class="container">
+      <div class="row align-items-center gy-5">
+        <!-- Texto -->
+        <div class="col-lg-6 fade-up">
+          <p class="hero-eyebrow">✦ Dale vida a tus llaves</p>
+          <h1 class="hero-title">
+            Llaveros únicos,<br>
+            <span class="highlight">100% originales</span>
+          </h1>
+          <p class="hero-subtitle">
+            Peliculas, series, deportes, marcas y más. 
+			¡Pedí el tuyo hoy!
+          </p>
+          <div class="d-flex flex-wrap gap-3">
+            <a href="#catalogo" class="btn-amber">
+              <i class="bi bi-grid-3x3-gap-fill"></i> Ver catálogo
+            </a>
+            <a id="hero-wa-btn" href="#" class="btn-outline-amber" target="_blank" rel="noopener">
+              <i class="bi bi-whatsapp"></i> Hacer pedido
+            </a>
+          </div>
+
+          <!-- Stats rápidas -->
+          <div class="d-flex gap-4 mt-4 pt-3" style="border-top:1px solid var(--border)">
+            <div>
+              <div style="font-family:'Poppins',sans-serif;font-size:1.5rem;font-weight:800;color:var(--amber)">50+</div>
+              <div style="font-size:.8rem;color:var(--text-dim)">Modelos</div>
+            </div>
+            <div>
+              <div style="font-family:'Poppins',sans-serif;font-size:1.5rem;font-weight:800;color:var(--amber)">6+</div>
+              <div style="font-size:.8rem;color:var(--text-dim)">Temáticas</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Visual decorativo -->
+        <div class="col-lg-6 fade-up hero-visual">
+          <div class="hero-grid">
+            <div class="hero-grid-item placeholder"><img src="images/llaveros/trionda2.png" alt="Llaverulis logo" /></div>
+            <div class="hero-grid-item placeholder"><img src="images/llaveros/trionda2.png" alt="Llaverulis logo" /></div>
+            <div class="hero-grid-item placeholder"><img src="images/llaveros/trionda2.png" alt="Llaverulis logo" /></div>
+            <div class="hero-grid-item placeholder"><img src="images/llaveros/trionda2.png" alt="Llaverulis logo" /></div>
+            <div class="hero-grid-item placeholder"><img src="images/llaveros/trionda2.png" alt="Llaverulis logo" /></div>
+            <div class="hero-grid-item placeholder"><img src="images/llaveros/trionda2.png" alt="Llaverulis logo" /></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       TEMÁTICAS
+       ============================================================ -->
+  <section class="section-pad section-dark">
+    <div class="container">
+      <div class="text-center mb-4 fade-up">
+        <p class="section-label">Encontrá el estilo que más te identifica.</p>
+        <h2 class="section-title">Temáticas disponibles</h2>
+      </div>
+      <div class="d-flex flex-wrap justify-content-center gap-3 fade-up">
+        <span class="theme-badge"><i class="bi bi-film"></i> Películas</span>
+        <span class="theme-badge"><i class="bi bi-tv"></i> Series</span>
+        <span class="theme-badge"><i class="bi bi-trophy"></i> Deportes</span>
+        <span class="theme-badge"><i class="bi bi-bag"></i> Marcas</span>
+        <span class="theme-badge"><i class="bi bi-stars"></i> Brillos</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       CATÁLOGO DE PRODUCTOS
+       ============================================================ -->
+  <section id="catalogo" class="section-pad">
+    <div class="container">
+      <div class="mb-5 fade-up">
+        <p class="section-label">Lo que tenemos para vos</p>
+        <h2 class="section-title">Nuestros llaveros</h2>
+        <p class="section-sub">Hacé clic en "Pedir por WhatsApp" para hacer tu pedido al instante.</p>
+      </div>
+
+      
+      <div class="row g-4" id="product-grid">
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       MAYORISTAS / REVENTA
+       ============================================================ -->
+  <section id="mayoristas" class="section-pad">
+    <div class="container">
+      <div class="text-center mb-5 fade-up">
+        <p class="section-label">Para revendedores</p>
+        <h2 class="section-title">Precios mayoristas</h2>
+        <p class="section-sub mx-auto">Ideal para kioscos, ferias, eventos y souvenirs.</p>
+      </div>
+
+      <!-- Card mayorista -->
+      <div class="row justify-content-center fade-up">
+        <div class="col-lg-8">
+          <div class="wholesale-card">
+            <h4 class="mb-4" style="color:var(--amber)">¿Cómo funciona?</h4>
+            <div class="wholesale-step">
+              <div class="wholesale-step-num">1</div>
+              <div class="wholesale-step-text">
+                <strong>Elegí los llaveros y la cantidad</strong>
+                <p>El mínimo es 15 unidades en total. Podés surtir modelos!</p>
+              </div>
+            </div>
+            <div class="wholesale-step">
+              <div class="wholesale-step-num">2</div>
+              <div class="wholesale-step-text">
+                <strong>Escribinos por WhatsApp</strong>
+                <p>Contanos qué querés y te cotizamos sin compromiso en minutos.</p>
+              </div>
+            </div>
+            <div class="wholesale-step">
+              <div class="wholesale-step-num">3</div>
+              <div class="wholesale-step-text">
+                <strong>Confirmamos y cerramos el pedido</strong>
+                <p>Coordinamos pago y entrega. Tiempo estimado: 3–5 días hábiles.</p>
+              </div>
+            </div>
+            <hr class="divider" />
+            <a id="wholesale-wa-btn" href="#"
+               class="btn-wa-big"
+               target="_blank" rel="noopener">
+              <i class="bi bi-whatsapp"></i> Quiero comprar mayorista
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       ENVÍOS Y RETIROS
+       ============================================================ -->
+  <section id="envios" class="section-pad section-dark">
+    <div class="container">
+      <div class="row gy-5 align-items-start">
+        <div class="col-lg-5 fade-up">
+          <p class="section-label">Logística</p>
+          <h2 class="section-title">Envíos y retiros</h2>
+          <p style="color:var(--text-muted);margin-top:.75rem">
+            Hacemos llegar tus llaveros donde estés. Trabajamos con las
+            principales opciones de envío del país y también podés retirar sin cargo.
+          </p>
+        </div>
+        <div class="col-lg-6 offset-lg-1 fade-up">
+          <div class="shipping-item">
+            <i class="bi bi-truck shipping-icon"></i>
+            <div>
+              <h5>Envío a domicilio</h5>
+              <p>Enviamos por correo o mensajería privada a todo el país. El costo lo coordinamos según destino.</p>
+            </div>
+          </div>
+          <div class="shipping-item">
+            <i class="bi bi-geo-alt shipping-icon"></i>
+            <div>
+              <h5>Retiro sin cargo</h5>
+              <!-- Editá la zona de retiro -->
+              <p>Retiro disponible en <strong style="color:var(--text-main)">Villa Devoto, CABA</strong>. Coordinamos día y horario por WhatsApp.</p>
+            </div>
+          </div>
+          <div class="shipping-item">
+            <i class="bi bi-clock shipping-icon"></i>
+            <div>
+              <h5>Tiempos de entrega</h5>
+              <p>Los pedidos de stock se despachan en 24–48 hs. Los mayoristas tardan 3–5 días hábiles.</p>
+            </div>
+          </div>
+          <div class="shipping-item">
+            <i class="bi bi-shield-check shipping-icon"></i>
+            <div>
+              <h5>Envíos seguros</h5>
+              <p>Embalamos cada pedido con cuidado para que llegue en perfectas condiciones.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============================================================
+       CONTACTO Y REDES
+       ============================================================ -->
+  <section id="contacto" class="section-pad">
+    <div class="container">
+      <div class="text-center mb-5 fade-up">
+        <p class="section-label">Información de</p>
+        <h2 class="section-title">Contacto</h2>
+      </div>
+      <div class="row justify-content-center fade-up">
+        <div class="col-lg-6">
+          <div class="d-flex flex-column gap-3">
+            <!-- WhatsApp -->
+            <a id="contact-wa-link" href="#" class="contact-link" target="_blank" rel="noopener">
+              <i class="bi bi-whatsapp" style="color:#25D366 !important"></i>
+              <div>
+                <strong>WhatsApp</strong>
+                <div style="font-size:.83rem;color:var(--text-dim)" id="contact-wa-number">+54 9 ...</div>
+              </div>
+              <i class="bi bi-arrow-right ms-auto" style="color:var(--text-dim)"></i>
+            </a>
+            <!-- Instagram — editá el usuario -->
+            <a href="https://instagram.com/TU_USUARIO" class="contact-link" target="_blank" rel="noopener">
+              <i class="bi bi-instagram" style="color:#E1306C !important"></i>
+              <div>
+                <strong>Instagram</strong>
+                <div style="font-size:.83rem;color:var(--text-dim)">@TU_USUARIO</div>
+              </div>
+              <i class="bi bi-arrow-right ms-auto" style="color:var(--text-dim)"></i>
+            </a>
+            <!-- Email — opcional, editá o eliminá -->
+            <a href="mailto:tu@email.com" class="contact-link">
+              <i class="bi bi-envelope-fill" style="color:var(--amber) !important"></i>
+              <div>
+                <strong>Email</strong>
+                <div style="font-size:.83rem;color:var(--text-dim)">tu@email.com</div>
+              </div>
+              <i class="bi bi-arrow-right ms-auto" style="color:var(--text-dim)"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer>
+    <div class="container">
+      <div class="mb-2 foot-logo">
+	  <img src="images/generales/logo.png" alt="Llaverulis logo" />
+	  </div>
+      <div><strong>ByLlaverulis</strong> &copy; <span id="footer-year"></span></div>
+      <div class="mt-1" style="color:var(--text-dim)">
+        Catálogo desarrollado por <a href="https://www.linkedin.com/in/agustín-domínguez-" target="_blank" rel="noopener noreferrer">
+          Agustín Dominguez
+		  <svg class="linkedin-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="4" ry="4"></rect>
+            <line x1="8" y1="11" x2="8" y2="16"></line>
+            <line x1="8" y1="8" x2="8" y2="8.01"></line>
+            <path d="M12 16v-5a3 3 0 0 1 3-3 3 3 0 0 1 3 3v5"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    /* ============================================================
+       CONFIGURACIÓN — EDITÁ ESTAS VARIABLES
+       ============================================================ */
+
+    // Número de WhatsApp en formato internacional (sin +, sin espacios)
+    // Ejemplo Argentina: 5491112345678
+    const WA_NUMBER = "5491112345678";
+
+    // Nombre del emprendimiento (aparece en mensajes y footer)
+    const BRAND_NAME = "Llaverulis";
+
+    // Mensaje predeterminado para el botón genérico de WhatsApp
+    const WA_DEFAULT_MSG = "Hola! Quiero hacer un pedido";
+
+    // Mensaje para consultas mayoristas
+    const WA_WHOLESALE_MSG = "Hola! Quiero consultar precios mayoristas / al por mayor 📦";
+
+    /* ============================================================
+       FIN CONFIGURACIÓN
+       ============================================================ */
+
+    /**
+     * Genera un link de WhatsApp con mensaje codificado.
+     * @param {string} message - Texto del mensaje.
+     * @returns {string} URL de WhatsApp.
+     */
+    function buildWaLink(message) {
+      return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(message)}`;
+    }
+
+    /**
+     * Se llama al clickear "Pedir por WhatsApp" en una card.
+     * Lee el nombre del producto desde data-attributes y arma el mensaje.
+     */
+    function setWaLink(el) {
+      const product    = el.getAttribute("data-product")    || "un llavero";
+      const precio     = el.getAttribute("data-precio")     || "";
+      const mayorista  = el.getAttribute("data-mayorista")  || "";
+      const msg = `¡Hola! Quiero pedir el llavero: *${product}* 🔑` +
+                  (precio    ? `\nPrecio unitario: ${precio}`     : "") +
+                  (mayorista ? `\nMe interesa el precio mayorista (10+): ${mayorista}` : "");
+      el.href = buildWaLink(msg);
+      return true; // permite que el link se abra normalmente
+    }
+
+    /* ── Inicialización de links WhatsApp ── */
+    document.addEventListener("DOMContentLoaded", function () {
+
+      // Año en footer
+      document.getElementById("footer-year").textContent = new Date().getFullYear();
+
+      // Mostrar número en contacto
+      document.getElementById("contact-wa-number").textContent = "+" + WA_NUMBER;
+
+      // Links genéricos de WhatsApp
+      const genericWaLink = buildWaLink(WA_DEFAULT_MSG);
+      ["nav-wa-btn", "nav-wa-mobile", "hero-wa-btn", "about-wa-btn", "contact-wa-link", "cta-wa-btn"]
+        .forEach(function(id) {
+          const el = document.getElementById(id);
+          if (el) el.href = genericWaLink;
+        });
+
+      // Link mayorista
+      const waWholesale = document.getElementById("wholesale-wa-btn");
+      if (waWholesale) waWholesale.href = buildWaLink(WA_WHOLESALE_MSG);
+
+      /* ── Fade in on scroll (IntersectionObserver) ── */
+      const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, { threshold: 0.12 });
+
+      document.querySelectorAll(".fade-up").forEach(function (el) {
+        observer.observe(el);
+      });
+
+      /* ── Stagger en grilla de productos ── */
+      document.querySelectorAll("#product-grid .fade-up").forEach(function (el, i) {
+        el.style.transitionDelay = (i * 0.08) + "s";
+      });
+    });
+	
+	async function loadProducts() {
+	  const res = await fetch('/products.json');
+	  const products = await res.json();
+
+	  const grid = document.getElementById("product-grid");
+
+	  grid.innerHTML = products.map((p, i) => {
+		const img1 = p.images[0];
+		const img2 = p.images[1];
+
+		return `
+		<div class="col-6 col-lg-3 fade-up">
+		  <div class="product-card">
+
+			<!-- DESKTOP -->
+			<div class="img-swap-wrapper desktop-img">
+			  <img class="img-primary" src="${img1}" alt="${p.name} 1" />
+			  <img class="img-secondary" src="${img2}" alt="${p.name} 2" />
+			</div>
+
+			<!-- MOBILE CAROUSEL -->
+			<div id="car-${i}" class="carousel slide mobile-carousel" data-bs-ride="carousel">
+			  <div class="carousel-inner">
+				${p.images.map((img, idx) => `
+				  <div class="carousel-item ${idx === 0 ? "active" : ""}">
+					<img src="${img}" class="d-block w-100" />
+				  </div>
+				`).join("")}
+			  </div>
+			</div>
+
+			<div class="card-body-custom">
+			  <span class="theme-tag">${p.theme}</span>
+			  <p class="card-product-name">${p.name}</p>
+			  <p class="card-desc">${p.description}</p>
+
+			  <div class="price-block">
+				<div class="price-retail">$${p.price}</div>
+				<div class="price-retail-label">Precio unitario</div>
+
+				<div class="price-wholesale-row">
+				  <i class="bi bi-tags-fill"></i>
+				  <div>
+					<span class="price-wholesale">$${p.wholesale}</span>
+					<span class="price-wholesale-label"> · Mayorista</span>
+				  </div>
+				</div>
+			  </div>
+
+			  <a href="#"
+				 class="btn-wa-card"
+				 onclick="return sendWA('${p.name}', ${p.price}, ${p.wholesale})">
+				<i class="bi bi-whatsapp"></i> Pedir por WhatsApp
+			  </a>
+
+			</div>
+		  </div>
+		</div>`;
+	  }).join("");
+
+	  // reactivar animaciones
+	  observeFadeUp();
+	}
+	
+	function sendWA(name, price, wholesale) {
+	  const msg = `Hola! Quiero pedir el llavero: *${name}* 🔑
+	Precio: $${price}
+	Mayorista: $${wholesale}`;
+
+	  const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+	  window.open(url, "_blank");
+
+	  return false;
+	}
+	
+	function observeFadeUp() {
+	  const observer = new IntersectionObserver((entries) => {
+		entries.forEach(e => {
+		  if (e.isIntersecting) e.target.classList.add("visible");
+		});
+	  }, { threshold: 0.12 });
+
+	  document.querySelectorAll(".fade-up").forEach(el => observer.observe(el));
+	}
+  </script>
+
+</body>
+</html>

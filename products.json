@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Pelota TRIONDA",
+    "theme": "Fútbol",
+    "description": "Llavero de la pelota oficial del mundial.",
+    "price": 5000,
+    "wholesale": 3600,
+    "images": [
+      "images/llaveros/trionda1.jpg",
+      "images/llaveros/trionda2.jpg"
+    ]
+  },
+  {
+    "name": "Zelda — Triforce",
+    "theme": "Gaming",
+    "description": "Llavero con la Trifuerza dorada sobre base negra.",
+    "price": 2500,
+    "wholesale": 1800,
+    "images": [
+      "https://placehold.co/400x400/1E293B/F59E0B?text=Zelda+1",
+      "https://placehold.co/400x400/1E293B/FBBF24?text=Zelda+2"
+    ]
+  }
+]
